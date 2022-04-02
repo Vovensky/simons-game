@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/simons-play-game/'
+  publicPath: '/simons-game/'
 }
