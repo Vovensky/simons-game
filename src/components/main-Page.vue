@@ -141,7 +141,7 @@ export default {
                 console.log(this.i);
                 console.log(this.arr.length)
                 this.i = 0;
-                setTimeout(this.playGame(), this.time);
+                setTimeout( () => this.playGame(), this.time);
             }   
         },
     }
