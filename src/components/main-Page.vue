@@ -3,10 +3,10 @@
     <h1> <b>Simons says </b> </h1>
     <div class='gamePlay'>
         <ul @click='experiencedPlayer'>
-         <li class='red' ref='red' data-title='1' value='0'></li>
-         <li class='blue' ref='blue' data-title='2' value='26'></li>
-         <li class='yellow' ref='yellow' data-title='3' value='51'></li>
-         <li class='green' ref='green' data-title='4' value= '76'></li>
+         <li class='red' ref='red' title='1' value='0'></li>
+         <li class='blue' ref='blue' title='2' value='26'></li>
+         <li class='yellow' ref='yellow' title='3' value='51'></li>
+         <li class='green' ref='green' title='4' value= '76'></li>
         </ul>
     </div>
     <div class='game-info'>
@@ -67,6 +67,7 @@ export default {
             this.count = 0;
             this.arr = [];
             this.i = 0;
+            this.$refs.lose.style.visibility = 'hidden';
             this.playGame();
         },
         playGame() {
@@ -114,6 +115,22 @@ export default {
         },
 
         experiencedPlayer(event) {
+            event.target.style.opacity = 1
+            setTimeout( () => event.target.style.opacity = 0.6, 200 );
+            switch(event.target.title) {
+                case '1':
+                    this.playSound(sound1);
+                    break;
+                case '2':
+                    this.playSound(sound2);
+                    break
+                case '3':
+                    this.playSound(sound3);
+                    break;
+                case '4':
+                    this.playSound(sound4);
+                    break;
+            }
             if(event.target.value > this.arr[this.i] || this.arr[this.i] - 25 >= event.target.value) {
                 this.$refs.lose.style.visibility = 'visible';
                 this.count = 0;
